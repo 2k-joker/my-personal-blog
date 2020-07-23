@@ -1,24 +1,27 @@
-<% if @article.errors.any? %>
-  <h3>The following errors occured while saving article:</h3>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class='container'>
+  <div class='row justify-content-center'>
+    <div class="col-10">
+      <%= render 'shared/errors' %>
+      <%= form_with(model: @article, class: "shadow-lg p-3 mb-5 bg-info rounded", local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :title, class: "col-2 col-form-label text-light text-right" %>
+          <div class="col-10">
+            <%= f.text_field :title, class: 'form-control shadow rounded', placeholder: 'Title of article' %>
+          </div>
+        </div>
 
-<%= form_with(model: @article, local: true) do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+        <div class="form-group row">
+          <%= f.label :description, class: "col-2 col-form-label text-light text-right" %>
+          <div class="col-10">
+            <%= f.text_area :description, rows: 7, class: 'form-control shadow rounded', placeholder: 'Description of article' %>
+          </div>
+        </div>
 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+        <div class='form-group row justify-content-center'>
+          <span class='tab'><%= f.submit class: 'btn btn-outline-light btn-md' %><span>
+          <%= link_to 'Cancel', articles_path, class: 'btn btn-outline-danger btn-md' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
