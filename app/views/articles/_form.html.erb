@@ -18,7 +18,7 @@
         </div>
 
         <div class='form-group row justify-content-center'>
-          <span class='tab'><%= f.submit class: 'btn btn-outline-light btn-md' %><span>
+          <span class='tab'><%= f.submit(@article.new_record? ? "Create" : "Update", class: 'btn btn-outline-light btn-md') %><span>
           <%= link_to 'Cancel', articles_path, class: 'btn btn-outline-danger btn-md' %>
         </div>
       <% end %>
