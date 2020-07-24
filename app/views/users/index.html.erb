@@ -1,0 +1,37 @@
+<h2 class='text-center mt-4'>Search</h2>
+
+<form action="">
+  <div class="container">
+    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+      <div class="input-group">
+        <input type="search" placeholder="Search bloggers" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+        <div class="input-group-append">
+          <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="row justify-content-md-center">
+      <div class="col-10 mt-4">
+        <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+             <%= link_to user.username, user_path(user.id) %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to gravatar_for(user, size:150) %></h5>
+            <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
+            <%= link_to 'View Profile', user_path(user.id), class: "btn btn-outline-success" %>
+            <%= link_to 'Edit Profile', edit_user_path(user.id), class: 'btn btn-outline-info' %> 
+          </div>
+          <div class="card-footer text-muted">
+            <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

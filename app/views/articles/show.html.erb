@@ -5,7 +5,8 @@
     <div class="col-10 mt-4">
       <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded">
         <div class="card-header font-italic">
-          By Khalil Kum
+          <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+            by <%= @article.user.username %>
         </div>
         <div class="card-body">
           <div class="card-text text-left"><%= simple_format(@article.description) %></div>
