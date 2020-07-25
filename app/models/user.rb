@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   # Association
-  has_many :articles
+  has_many :articles, dependent: :destroy
   has_secure_password
 
   # Validation

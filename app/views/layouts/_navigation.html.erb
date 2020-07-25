@@ -31,10 +31,10 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "View profile", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "Edit profile", edit_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to 'Logout', logout_path, class: "dropdown-item", method: :delete %>
+            <%= link_to 'Delete account', user_path(current_user), class: "dropdown-item text-danger",
+                method: :delete, data: { confirm: "It's ok... I'm not offended. I'm sure you didn't mean to do that. Now go ahead and hit 'Cancel'" } %>
           </div>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Logout', logout_path, class: 'nav-link', method: :delete %>
         </li>
       <% else %>
         <li class="nav-item">

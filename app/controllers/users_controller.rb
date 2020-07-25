@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :update]
+  before_action :set_user, only: [:edit, :show, :update, :destroy]
   before_action :require_user_auth, only: [:update, :edit]
-  before_action :verify_user, only: [:edit, :update]
+  before_action :verify_user, only: [:edit, :update, :destroy]
 
   def create
     @user = User.new(whitelist_user_params)
@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "Account successfully deleted"
+    redirect_to root_path
   end
 
   def edit
