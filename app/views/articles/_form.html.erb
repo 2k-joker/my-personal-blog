@@ -17,6 +17,14 @@
           </div>
         </div>
 
+        <div class="form-group row">
+          <%= f.label :category, class: "col-2 col-form-label text-light text-right" %>
+          <div class="col-10 mt-2">
+            <%= f.collection_select(:category_ids, Category.all, :id, :name, { prompt: "--No selection--" },
+              { multiple: true, size: 3, class: "custom-select shadow rounded" }) %>
+          </div>
+        </div>
+
         <div class='form-group row justify-content-center'>
           <span class='tab'><%= f.submit(@article.new_record? ? "Create" : "Update", class: 'btn btn-outline-light btn-md') %><span>
           <%= link_to 'Cancel', articles_path, class: 'btn btn-outline-danger btn-md' %>
