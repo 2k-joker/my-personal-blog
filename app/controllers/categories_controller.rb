@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :require_admin , except: [:index, :show]
   def create
     @category = Category.new(whitelist_category_params)
     if @category.save
@@ -25,5 +26,12 @@ class CategoriesController < ApplicationController
 
   def whitelist_category_params
     params.require(:category).permit(:name)
+  end
+
+  def require_admin
+    if !(logged_in? && current_user.admin?)
+      flash[:alert] = "Slow your role, admins only"
+      redirect_to categories_path
+    end
   end
 end
