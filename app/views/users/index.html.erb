@@ -25,8 +25,14 @@
             <h5 class="card-title"><%= link_to gravatar_for(user, size:150) %></h5>
             <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
             <%= link_to 'View Profile', user_path(user.id), class: "btn btn-outline-success" %>
-            <% if logged_in? && user == current_user %>
-              <%= link_to 'Edit Profile', edit_user_path(user.id), class: 'btn btn-outline-info' %>
+            <% if logged_in? %>
+              <% if user == current_user %>
+                <%= link_to 'Edit Profile', edit_user_path(user.id), class: 'btn btn-outline-info' %>
+              <% end %>
+              <% if current_user.admin? %>
+                <%= link_to 'Delete Account', user_path(user.id), class: 'btn btn-outline-danger',
+                    data: { confirm: "Are you sure this is the way to go? Remeber: make peace not war."} %>
+              <% end %>
             <% end %>
           </div>
           <div class="card-footer text-muted">

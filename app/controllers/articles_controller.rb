@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def verify_user
-    if current_user != @article.user
+    if current_user != @article.user && !current_user.admin?
       flash[:alert] = "Access denied. Stop trying to reap where you did not sow"
       redirect_to article_path
     end
