@@ -12,17 +12,21 @@
       <li class="nav-item">
         <%= link_to "Bloggers", users_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <% if logged_in? && current_user.admin? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "New category", new_category_path, class: "dropdown-item"  %>
+              <%= link_to "View categories", categories_path, class: "dropdown-item"  %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Categories', categories_path, class: 'nav-link' %>
+        </li>
+      <% end %>
       <% if logged_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
