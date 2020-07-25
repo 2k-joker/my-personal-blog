@@ -6,7 +6,10 @@
       <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded">
         <div class="card-header font-italic">
           <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
-            by <%= @article.user.username %>
+            by <%= @article.user.username %><br>
+            <% if @article.categories.any? %>
+              <div class="mt-2"><%= render @article.categories %></div>
+            <% end %>
         </div>
         <div class="card-body">
           <div class="card-text text-left"><%= simple_format(@article.description) %></div>
