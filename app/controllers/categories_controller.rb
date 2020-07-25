@@ -1,13 +1,29 @@
 class CategoriesController < ApplicationController
+  def create
+    @category = Category.new(whitelist_category_params)
+    if @category.save
+      flash[:notice] = 'Category successfully created'
+      redirect_to @category
+    else
+      render 'new'
+    end
+  end
+
   def index 
 
   end
 
   def new
-
+    @category = Category.new
   end
   
   def show
 
-  end  
+  end
+
+  private
+
+  def whitelist_category_params
+    params.require(:category).permit(:name)
+  end
 end
