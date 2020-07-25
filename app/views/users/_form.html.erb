@@ -26,7 +26,11 @@
 
         <div class='form-group row justify-content-center'>
           <span class='tab'><%= f.submit(@user.new_record? ? "Sign Up" : "Update", class: 'btn btn-outline-light btn-md') %><span>
-          <%= link_to 'Cancel', root_path, class: 'btn btn-outline-danger btn-md' %>
+          <% if logged_in? %>
+          <%= link_to 'Cancel', user_path(@user.id), class: 'btn btn-outline-danger btn-md' %>
+          <% else %>
+            <%= link_to 'Cancel', root_path, class: 'btn btn-outline-danger btn-md' %>
+          <% end %>
         </div>
       <% end %>
     </div>
