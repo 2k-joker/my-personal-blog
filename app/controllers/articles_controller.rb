@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_auth, except: [:show, :index]
+  before_action :verify_user, only: [:edit, :update, :destroy]
 
   def create
     @article = Article.new(whitelist_article_params)
@@ -44,6 +46,13 @@ class ArticlesController < ApplicationController
 
   def find_article
     @article = Article.find(params[:id])
+  end
+
+  def verify_user
+    if current_user != @article.user
+      flash[:alert] = "Access denied. Stop trying to reap where you did not sow"
+      redirect_to article_path
+    end
   end
 
   def whitelist_article_params

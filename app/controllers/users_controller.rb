@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update]
+  before_action :require_user_auth, only: [:update, :edit]
+  before_action :verify_user, only: [:edit, :update]
 
   def create
     @user = User.new(whitelist_user_params)
@@ -35,17 +37,24 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'edit'
-    end
-    
+    end    
   end
   
   private
 
-  def whitelist_user_params
-    params.require(:user).permit(:username, :email, :password)
-  end
-
   def set_user
     @user = User.find(params[:id])
   end
+
+  def verify_user
+    if current_user != @user
+      flash[:alert] = "Access denied. Stop trying to reap where you did not sow"
+      redirect_to @user
+    end
+  end
+
+
+  def whitelist_user_params
+    params.require(:user).permit(:username, :email, :password)
+  end  
 end
