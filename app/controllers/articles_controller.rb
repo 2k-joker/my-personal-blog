@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
   before_action :verify_user, only: [:edit, :update, :destroy]
 
   def create
-    byebug
     @article = Article.new(whitelist_article_params)
     @article.user = current_user
     if @article.save
