@@ -1,9 +1,19 @@
 <div class="container" id="home-container">
-  <div class="jumbotron text-center text-white">
-    <h1 class="display-4">2k-Joker's World</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <div class="jumbotron text-center text-white" id="home-jumbotron">
+    <h1 class="display-4 text-left font-weight-bold">2k-Joker's World</h1>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <%= link_to "Join Me!", signup_path, class: "btn btn-success btn-lg" %>
+  </div>
+</div>
+
+<div class="container mx-auto mb-2" id="profile-container">
+  <div class="jumbotron shadow rounded mx-auto mb-2" id="profile-jumbotron"></div>
+  <div class="card text-center shadow-lg p-3 mb-5 mt-2 mx-auto">
+    
+    <div class="card-body">
+      <h5 class="card-title font-weight-bold">Welcome to my blog!</h5>
+      <p class="card-text text-monospace">I will be using this platform to write about my journey and experiences along the way.
+        If you would like to keep up and share your story as well then...</p>
+        <%= link_to "Join Me!", signup_path, class: "btn btn-success btn-lg mt-3" %>
+    </div>
   </div>
 </div>

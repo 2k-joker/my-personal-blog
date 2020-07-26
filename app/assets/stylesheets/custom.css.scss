@@ -23,14 +23,29 @@
 
 #home-container {
   margin-top: 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+#profile-container {
+  margin-top: 50px;
+  width: 600px;
 }
 
-.jumbotron {
+#profile-jumbotron {
+  background-image: asset-url('profile_image.png');
+  background-position: center center;
+  margin-left: 60px;
+  width: 300px;
+  height: 300px;
+}
+
+#home-jumbotron {
   background-image: asset-url('jumbo_back_image.webp');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 450px;
+  height: 350px;
+  width: 1400px;
 }
 
 html,
