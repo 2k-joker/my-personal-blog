@@ -20,8 +20,9 @@
         <div class="form-group row">
           <%= f.label :category, class: "col-2 col-form-label text-light text-right" %>
           <div class="col-10 mt-2">
-            <%= f.collection_select(:category_ids, Category.all, :id, :name, { prompt: "--No selection--" },
-              { multiple: true, size: 3, class: "custom-select shadow rounded" }) %>
+            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+              <% cb.label(class: "checkbox-inline input_checkbox") { cb.check_box(class: "checkbox ml-2") + " " + cb.text } %>
+            <% end %>
           </div>
         </div>
 
