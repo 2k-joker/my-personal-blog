@@ -1,0 +1,24 @@
+<div class='container'>
+  <div class='row justify-content-center'>
+    <div class="col-10">
+      <%= render 'shared/errors', obj: @category %>
+      <%= form_with(model: @category, class: "shadow-lg p-3 mb-5 bg-info rounded", local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :name, 'Category name', class: "col-2 col-form-label text-light text-right" %>
+          <div class="col-10">
+            <%= f.text_field :name, class: 'form-control shadow rounded', placeholder: 'e.g Lifestyle' %>
+          </div>
+        </div>
+
+        <div class='form-group row justify-content-center'>
+          <span class='tab'><%= f.submit(@category.new_record? ? "Create" : "Update", class: 'btn btn-outline-light btn-md') %><span>
+          <% if @category.id? %>
+            <%= link_to 'Cancel', category_path(@category), class: 'btn btn-outline-danger btn-md' %>
+          <% else %>
+            <%= link_to 'Cancel', categories_path, class: 'btn btn-outline-danger btn-md' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
