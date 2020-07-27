@@ -3,13 +3,13 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Link to website:
-https://personal-blog-2k-joker.herokuapp.com/
+## Notes
+* Still working progress but it's live on heroku: https://personal-blog-2k-joker.herokuapp.com/
 
-Git branch naming convention:
+* Git branch naming convention:
 
-* <model>-do-some-action if action belongs to single model
-* <verb>-some-feature-or-description if action belongs to more than one model
+  * <model>-do-some-action if action belongs to single model
+  * <verb>-some-feature-or-description if action belongs to more than one model
 
 Things you may want to cover:
 
