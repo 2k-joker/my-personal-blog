@@ -8,8 +8,8 @@ application up and running.
 
 * Git branch naming convention:
 
-  * <model>-do-some-action if action belongs to single model
-  * <verb>-some-feature-or-description if action belongs to more than one model
+  * **model**-do-some-action if action belongs to single model
+  * **verb**-some-feature-or-description if action belongs to more than one model
 
 Things you may want to cover:
 
