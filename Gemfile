@@ -31,8 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-# Use to import images
-gem 'carrierwave', '~> 2.0'
+# Use font-awesome to add custom icons
+gem 'font-awesome-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
