@@ -1,0 +1,17 @@
+<div class="flash-partial">
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @users  %>
+  <div class="flex-container">
+    <% @users.each do |user| %>
+      <div class="card text-center text-white bg-dark mb-5 ml-3" style="max-width: 18rem;">
+        <div class="card-header"><strong><%= link_to user.username, user_path(user.id) %></strong></div>
+        <div class="card-body">
+          <h5 class="card-title"><%= pluralize(user.articles.count, 'article') + " so far" %></h5>
+          <p class="card-text">Member since <%= time_ago_in_words(user.created_at) %> ago </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

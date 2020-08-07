@@ -38,6 +38,30 @@ class UsersController < ApplicationController
     @articles = @user.articles.paginate(page: params[:page], per_page: 10)
   end
 
+  def search
+    if params[:user].present?
+      @users = User.search(params[:user])
+      if logged_in?
+        @users = current_user.except_current_user(@users)
+      end
+      if @users.any?
+        respond_to do |format|
+          format.js { render partial: 'users/user_search_result' }
+        end
+      else
+        respond_to do |format|
+          flash.now[:alert] = "No results found"
+          format.js { render partial: 'users/user_search_result' }
+        end
+      end
+    else
+      respond_to do |format|
+        flash.now[:alert] = "Searching is not that hard. A single character is all it takes."
+        format.js { render partial: 'users/user_search_result' }
+      end      
+    end
+  end
+
   def update
     if @user.update(whitelist_user_params)
       flash[:notice] = "Account successfully updated"

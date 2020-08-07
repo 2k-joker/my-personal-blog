@@ -73,6 +73,18 @@ body {
   padding-left: 0;
 }
 
+.flex-container {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flash-partial{
+  margin-top: 5px;
+  align-self: center;
+}
+
 /*pagination styling*/
 .flickr_pagination {
   text-align: center;

@@ -11,4 +11,27 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false },
    length: { maximum: 105 }, format: { with: VALID_EMAIL_REGEX }
+
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+
+  def self.matches(field_name, param)
+    where("#{field_name} like ?", "%#{param}%")
+  end
+
+  def self.search(param)
+    param.strip!
+    query_result = (username_matches(param) + email_matches(param)).uniq
+    return nil unless query_result
+    query_result
+  end
+
+  def self.email_matches(param)
+    matches('email', param)
+  end
+
+  def self.username_matches(param)
+    matches('username', param)
+  end
 end
