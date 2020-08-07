@@ -1,17 +1,24 @@
-<h2 class='text-center mt-4'>Search</h2>
-
-<form action="">
-  <div class="container">
-    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-      <div class="input-group">
-        <input type="search" placeholder="Search articles" aria-describedby="button-addon1" class="form-control border-0 bg-light">
-        <div class="input-group-append">
-          <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+<div class="sear-area">
+  <h2 class='text-center mt-4'>Search Articles</h2>
+  <%= form_tag search_article_path, remote: true, method: :get do %>
+    <div class="container">
+      <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+        <div class="input-group">
+          <%= text_field_tag :article, params[:article], placeholder: 'search', autofocus: true, class: 'form-control border-0 bg-light' %>
+          <div class="input-group-append">
+            <%= button_tag type: :submit, class: 'btn btn-link text-primary' do %>
+              <%= fa_icon 'search' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+  <% end %>
+</div>
+
+<div id="article-results">
+
+</div>
 
 <%= render 'article' %>
 

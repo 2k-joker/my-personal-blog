@@ -1,0 +1,30 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="row justify-content-md-center">
+      <div class="col-10 mt-4">
+        <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+             <%= link_to user.username, user_path(user.id) %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to gravatar_for(user, size:150) %></h5>
+            <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
+            <%= link_to 'View Profile', user_path(user.id), class: "btn btn-outline-success" %>
+            <% if logged_in? %>
+              <% if user == current_user %>
+                <%= link_to 'Edit Profile', edit_user_path(user.id), class: 'btn btn-outline-info' %>
+              <% end %>
+              <% if current_user.admin? %>
+                <%= link_to 'Delete Account', user_path(user.id), class: 'btn btn-outline-danger',
+                    data: { confirm: "Are you sure this is the way to go? Remeber: make peace not war."} %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

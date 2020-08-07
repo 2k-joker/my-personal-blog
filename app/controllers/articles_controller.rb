@@ -30,7 +30,29 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def search
+    if params[:article].present?
+      @articles = Article.search(params[:article])
+      if @articles.any?
+        respond_to do |format|
+          format.js { render partial: 'articles/article_search_result' }
+        end
+      else
+        respond_to do |format|
+          flash.now[:alert] = "No results found"
+          format.js { render partial: 'articles/article_search_result' }
+        end
+      end
+    else
+      respond_to do |format|
+        flash.now[:alert] = "Searching is not that hard. A single character is all it takes."
+        format.js { render partial: 'articles/article_search_result' }
+      end      
+    end
+  end
+
   def show
+
   end
 
   def update
