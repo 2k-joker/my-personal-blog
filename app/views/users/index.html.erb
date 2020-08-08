@@ -4,7 +4,7 @@
     <div class="container">
       <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
         <div class="input-group">
-          <%= text_field_tag :user, params[:user], placeholder: 'username or email', autofocus: true, class: 'form-control border-0 bg-light' %>
+          <%= text_field_tag :user, params[:user], placeholder: 'search', autofocus: true, class: 'form-control border-0 bg-light' %>
           <div class="input-group-append">
             <%= button_tag type: :submit, class: 'btn btn-link text-primary' do %>
               <%= fa_icon 'search' %>
