@@ -27,10 +27,12 @@
           <%= link_to 'Categories', categories_path, class: 'nav-link' %>
         </li>
       <% end %>
+    </ul>
+    <ul class="navbar-nav ml-auto">
       <% if logged_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <%= '[admin]' if current_user.admin? %> <%=  current_user.username %>
+             <strong><%= fa_icon 'user' %> <%= '[admin]' if current_user.admin? %> <%=  current_user.username %></strong>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "View profile", user_path(current_user), class: "dropdown-item" %>
@@ -41,20 +43,24 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to 'Login', login_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign Up', signup_path, class: 'nav-link' %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <strong>Account</strong>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Login", login_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Sign Up", signup_path, class: "dropdown-item" %>
+          </div>
         </li>
       <% end %>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline ml-3 my-2 my-md-0">
       <% if logged_in? %>
         <%= link_to 'New', new_article_path, class: 'btn btn-outline-success my-2 my-sm-0'%>
       <% else %>
         <%= link_to 'New', '#', class: 'btn btn-outline-secondary my-2 my-sm-0'%>
       <% end %>
-    </form>%>
+    </form>
   </div>
 </nav>
