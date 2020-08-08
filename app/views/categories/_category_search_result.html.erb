@@ -1,0 +1,16 @@
+<div class="flash-partial">
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @categories  %>
+  <div class="flex-container">
+    <% @categories.each do |category| %>
+      <div class="card  text-center text-white bg-dark mb-5 ml-3" style="max-width: 18rem; min-width: 15rem;">
+        <div class="card-header"><strong><%= link_to category.name, category_path(category.id) %></strong></div>
+        <div class="card-body">
+          <p class="card-title"><%= pluralize(category.articles.count, 'article') %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -27,6 +27,27 @@ class CategoriesController < ApplicationController
     @articles = @category.articles.paginate(page: params[:page], per_page: 5)
   end
 
+  def search
+    if params[:category].present?
+      @categories = Category.search(params[:category])
+      if @categories.any?
+        respond_to do |format|
+          format.js { render partial: 'categories/category_search_result' }
+        end
+      else
+        respond_to do |format|
+          flash.now[:alert] = "No results found"
+          format.js { render partial: 'categories/category_search_result' }
+        end
+      end
+    else
+      respond_to do |format|
+        flash.now[:alert] = "Searching is not that hard. A single character is all it takes."
+        format.js { render partial: 'categories/category_search_result' }
+      end      
+    end
+  end
+
   def update
     @category = Category.find(params[:id])
 

@@ -6,4 +6,9 @@ class Category < ApplicationRecord
   # Validations
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
   validates_uniqueness_of :name
+
+  def self.search(param)
+    param.strip!
+    where('name LIKE ?', "%#{param}%")
+  end
 end

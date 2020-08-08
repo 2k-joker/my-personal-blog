@@ -1,5 +1,26 @@
 <h2 class='text-center mt-4'>Categories</h2>
 
+<div class="sear-area">
+  <%= form_tag search_category_path, remote: true, method: :get do %>
+    <div class="container">
+      <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+        <div class="input-group">
+          <%= text_field_tag :category, params[:category], placeholder: 'search', autofocus: true, class: 'form-control border-0 bg-light' %>
+          <div class="input-group-append">
+            <%= button_tag type: :submit, class: 'btn btn-link text-primary' do %>
+              <%= fa_icon 'search' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="category-results">
+
+</div>
+
 <div class="container">
   <% @categories.each do |category| %>
     <div class="row justify-content-md-center">

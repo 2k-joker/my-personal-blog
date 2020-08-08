@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   has_many :article_categories
   has_many :categories, through: :article_categories
 
-  # Valifations
+  # Validations
   validates :title, presence: true, length: { minimum: 5, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 500 }
 
@@ -17,8 +17,8 @@ class Article < ApplicationRecord
   end
 
   def self.match_by_author(param)
-    (article_user_matches('username', param) + 
-      article_user_matches('email', param)).uniq
+    (article_user_matches('username', param) + article_user_matches('email', param) +
+      article_user_matches('first_name', param) + article_user_matches('last_name', param)).uniq
   end
 
   def self.title_matches(param)

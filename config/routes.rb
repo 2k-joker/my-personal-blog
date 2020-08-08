@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get 'search_user', to: 'users#search'
   get 'search_article', to: 'articles#search'
+  get 'search_category', to: 'categories#search'
 end
