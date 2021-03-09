@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 ## Notes
-* Still working progress but it's live on heroku: https://personal-blog-2k-joker.herokuapp.com/
+* Still work in progress but it's live on heroku: https://personal-blog-2k-joker.herokuapp.com/
 
 * Git branch naming convention:
 
